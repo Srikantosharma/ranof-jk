@@ -1424,8 +1424,8 @@ async def shutdown(app: web.Application) -> None:
 
 async def main() -> None:
     app = web.Application()
-    app.add_get("/health", health)
-    app.add_post("/telegram/webhook", telegram_webhook)
+    app.router.add_get("/health", health)
+    app.router.add_post("/telegram/webhook", telegram_webhook)
     app.on_startup.append(startup)
     app.on_cleanup.append(shutdown)
 
